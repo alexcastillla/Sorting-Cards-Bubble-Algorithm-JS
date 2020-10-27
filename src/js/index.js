@@ -11,8 +11,10 @@ let cardHtmlContainer = "cardContainer";
 
 const drawbutton = document.querySelector("#draw");
 const sortbutton = document.querySelector("#sort");
+const sortselectionbutton = document.querySelector("#sortselection");
 drawbutton.addEventListener("click", draw);
 sortbutton.addEventListener("click", sort);
+sortselectionbutton.addEventListener("click", sortselection);
 
 class Card {
   constructor(cardNumber, cardType) {
@@ -91,9 +93,16 @@ function createRow() {
   let cardContainer = document.getElementById(cardHtmlContainer);
   return cardContainer.insertRow(-1);
 }
-// Funcion BubbleSort
+
+// Algoritmo Bubble Sort
 function sort() {
   bubbleSort(cardArr);
+}
+
+// Algoritmo Selection Sort
+
+function sortselection() {
+  selectSort(cardArr);
 }
 
 const bubbleSort = arr => {
@@ -118,3 +127,21 @@ const bubbleSort = arr => {
     }
   }
 };
+
+const selectSort = arr => {
+  let min = 0;
+  while (min < arr.length - 1) {
+    for (let i = min + 1; i < arr.length; i++) {
+      if (arr[min].cardNumber > arr[i].cardNumber) {
+        let aux = arr[min].cardNumber;
+        arr[min].cardNumber = arr[i].cardNumber;
+        arr[i].cardNumber = aux;
+      }
+    }
+    min++;
+    drawRow(createRow());
+  }
+  return arr;
+};
+
+// console.log(selectSort(arr));
