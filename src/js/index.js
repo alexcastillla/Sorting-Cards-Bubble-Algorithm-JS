@@ -12,9 +12,15 @@ let cardHtmlContainer = "cardContainer";
 const drawbutton = document.querySelector("#draw");
 const sortbutton = document.querySelector("#sort");
 const sortselectionbutton = document.querySelector("#sortselection");
+const clearbutton = document.querySelector("#clear");
 drawbutton.addEventListener("click", draw);
 sortbutton.addEventListener("click", sort);
 sortselectionbutton.addEventListener("click", sortselection);
+clearbutton.addEventListener("click", clear);
+
+function clear() {
+  location.reload();
+}
 
 class Card {
   constructor(cardNumber, cardType) {
